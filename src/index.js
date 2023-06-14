@@ -1,11 +1,12 @@
 import './style.css';
-import {opel} from "./modules/Car.js";
+import { Truck, PassengerCar } from "./modules/car";
+import { Station } from "./modules/station";
 
 const open = document.querySelector('.open');
 const car = document.querySelector('.car');
 
 const testArray = {
-  passangerCar: [
+  passengerCar: [
     ['Opel', 'Crossland', 45],
     ['Opel', 'Grandland X', 53],
     ['Mazda', 'cx-5', 55],
@@ -28,27 +29,47 @@ const testArray = {
 
 const getTestCar = () => {
   const typeBool = Math.random() < 0.6;
-  const listCar = typeBool ? testArray.passangerCar : testArray.truck;
+  const listCar = typeBool ? testArray.passengerCar : testArray.truck;
   const randomCar = listCar[(Math.floor(Math.random() * listCar.length))];
-  return randomCar;
+  return typeBool ? new PassengerCar(...randomCar) : new Truck(...randomCar);
 };
+
+const station = new Station([
+  {
+    type: 'petrol',
+    count: 2,
+    speed: 5,
+  },
+  {
+    type: 'diesel',
+    count: 1,
+    speed: 20,
+  },
+], '.app');
 
 
 open.addEventListener('click', () => {
-  console.log('Открыто');
+  station.init();
+  console.log(station);
   open.remove();
   car.style.display = 'block';
   car.addEventListener('click', () => {
-    console.log(getTestCar());
+    station.addCarQueue(getTestCar());
   });
 });
 
-console.log(opel);
-console.log(opel.setModel('Crossland S').getTitle());
-console.log(opel);
-console.log(opel.setModel('Crossland Lux')
-    .fillUp()
-    .getTitle());
-console.log(opel);
+
+
+
+const opel = new PassengerCar('Opel', 'Crossland', 45);
+const volvo = new Truck('Volvo', 'FH16', 700);
+
+// console.log(volvo);
+// console.log(opel.setModel('Crossland S').getTitle());
+// console.log(opel);
+// console.log(opel.setModel('Crossland Lux')
+//     .fillUp()
+//     .getTitle());
+// console.log(opel);
 
 

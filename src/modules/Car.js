@@ -1,4 +1,4 @@
-class Car {
+export class Car {
     #maxTank; //Скрыть свойство
     constructor(brand, model, maxTank) {
         this.brand = brand;
@@ -16,12 +16,12 @@ class Car {
         return this;
     }
 
-    needPetrol() {
+    get needPetrol() {
         return this.#maxTank - this.nowTank;
     }
 
     fillUp() {
-        this.nowTank = this.#maxTank;
+        this.nowTank = this.maxTank;
         return this;
     }
 
@@ -29,9 +29,32 @@ class Car {
         return this.#maxTank;
     }
 
-    set maxTank(data) {
-        console.log(`Нельзя менять значение на ${data}`);
+    static string = 'Новый автомобиль ';
+
+    static logger(str) {
+        console.log(str)
+    }
+
+    static from({brand, model, maxTank}) {
+        const car = new Car(brand, model, maxTank);
+        Car.logger(Car.string + car.getTitle());
+        return car;
     }
 }
 
-export const opel = new Car('Opel', 'Crossland', 45);
+export class PassengerCar extends Car {
+    typeCar = 'passenger';
+    constructor(brand, model, maxTank, typeFuel = 'petrol') {
+        super(brand, model, maxTank);
+        this.typeFuel = typeFuel;
+    }
+}
+
+export class Truck extends Car {
+    typeCar = 'truck';
+    constructor(brand, model, maxTank, typeFuel = 'diesel') {
+        super(brand, model, maxTank);
+        this.typeFuel = typeFuel;
+    }
+}
+
