@@ -51,10 +51,12 @@ export class PassengerCar extends Car {
 }
 
 export class Truck extends Car {
-    typeCar = 'truck';
+    typeCar = 'Truck';
     constructor(brand, model, maxTank, typeFuel = 'diesel') {
         super(brand, model, maxTank);
         this.typeFuel = typeFuel;
+
+
     }
 }
 

@@ -25,6 +25,10 @@ ul {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
+.gas {
+  list-style-image: url(assets/img/gas-station.svg);
+}
+
 .petrol {
   list-style-image: url(assets/img/icon-park_petrol.svg);
   list-style-type: '👉';
@@ -35,7 +39,7 @@ ul {
   list-style-image: url(assets/img/icon-park-outline_petrol.svg);
 }
 
-.passanger {
+.passenger {
   padding-left: 20px;
   background-image: url(assets/img/clarity_car-solid.svg);
   background-repeat: no-repeat;

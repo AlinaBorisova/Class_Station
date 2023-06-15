@@ -27,23 +27,21 @@ const testArray = {
   ],
 };
 
+
 const getTestCar = () => {
   const typeBool = Math.random() < 0.6;
   const listCar = typeBool ? testArray.passengerCar : testArray.truck;
   const randomCar = listCar[(Math.floor(Math.random() * listCar.length))];
+  // console.log(new Truck(...randomCar))
   return typeBool ? new PassengerCar(...randomCar) : new Truck(...randomCar);
 };
 
 const station = new Station([
   {
     type: 'petrol',
-    count: 2,
-    speed: 5,
   },
   {
     type: 'diesel',
-    count: 1,
-    speed: 20,
   },
 ], '.app');
 
@@ -58,18 +56,5 @@ open.addEventListener('click', () => {
   });
 });
 
-
-
-
-const opel = new PassengerCar('Opel', 'Crossland', 45);
-const volvo = new Truck('Volvo', 'FH16', 700);
-
-// console.log(volvo);
-// console.log(opel.setModel('Crossland S').getTitle());
-// console.log(opel);
-// console.log(opel.setModel('Crossland Lux')
-//     .fillUp()
-//     .getTitle());
-// console.log(opel);
 
 
