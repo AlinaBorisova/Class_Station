@@ -25,8 +25,11 @@ ul {
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
-.gas {
-  list-style-image: url(assets/img/gas-station.svg);
+.gaz {
+  background: url(assets/img/gas-station.svg);
+  background-repeat: no-repeat;
+  background-size: 50px;
+  padding-left: 50px;
 }
 
 .petrol {

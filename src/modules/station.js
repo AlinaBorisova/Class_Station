@@ -15,7 +15,7 @@ export class Station {
     }
 
     addGasStation() {
-        this.gasStation = {type: 'gas'};
+        this.gasStation = {type: 'gaz'};
         return this.gasStation;
     }
 
